@@ -2,7 +2,7 @@
 [blueprint]: http://flask.pocoo.org/docs/1.0/blueprints/
 [JWT]: https://github.com/vimalloc/flask-jwt-extended
 [previous project]: https://github.com/AngelMunoz/FlaskBlueprintsDemo
-[auth]:
+[auth]: https://github.com/AngelMunoz/flask-minimal-skeleton/blob/master/app/auth/controller.py
 
 # Minimal Flask Skeleton
 This is a fairly small [Flask] skeleton that includes an [auth] [blueprint] with minimal details
