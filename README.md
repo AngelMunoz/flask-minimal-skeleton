@@ -64,3 +64,13 @@ or just run
 $ pipenv shell
 (virtualenv) $ python app.py
 ```
+
+and don't forget to update your custom variables in the `.env` file
+```
+FLASK_APP=app.py
+FLASK_ENV=development
+DATABASE_URL=mongodb://localhost:27017/vendutron
+SECRET_KEY=2c997eed5386cde72187fe8e4f05505b0057c2530993214464824666c02081e0 # use your own
+FLASK_DEBUG=True
+DEBUG=True
+```
