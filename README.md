@@ -36,8 +36,27 @@ app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(users, url_prefix='/users') # this one
 ```
 
-feel free to clone and add more stuff as your app grows
+feel free to clone and add more stuff as your app grows.
+if you feel I'm missing something, please send a pull request or raise an issue in github.
+this repo was built from this [previous project].
 
-if you feel I'm missing something, please send a pull request or raise an issue in github
+to have the best experience developing this skeleton you should be using the following
 
-this repo was built from this [previous project]
+- [Pipenv](https://github.com/pypa/pipenv)
+- [VsCode](https://code.visualstudio.com/)
+- [Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+
+```
+pipenv --three # creates a python 3 virtualenv
+pipenv install
+```
+
+press <kbd>F5</kbd>
+
+set a breakpoint and send a request
+
+or just run
+```
+$ pipenv shell
+(virtualenv) $ python app.py
+```
