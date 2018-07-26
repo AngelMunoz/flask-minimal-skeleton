@@ -74,3 +74,5 @@ SECRET_KEY=2c997eed5386cde72187fe8e4f05505b0057c2530993214464824666c02081e0 # us
 FLASK_DEBUG=True
 DEBUG=True
 ```
+
+if you intend to publish this repo else were remember to put `.env` file outside github I left it here for *completeness*
