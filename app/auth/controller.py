@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import User
 from flask_jwt_extended import jwt_required, create_access_token,\
     get_jwt_identity
-from mongoengine import ValidationError
+from mongoengine import ValidationError, NotUniqueError
 
 auth = Blueprint('auth', __name__)
 
@@ -42,15 +42,22 @@ def signup():
     user.set_password(request.json.get('password'))
     try:
         user.validate()
+    except ValidationError as error:
+        return jsonify(error.to_dict()), 400
+    try:
         user.save()
         access_token = create_access_token(identity=user.email)
         return jsonify(access_token=access_token), 200
-    except ValidationError as error:
-        return jsonify(error.to_dict()), 400
-
+    except NotUniqueError as error:
+        return jsonify({
+            'message': 'The email provided is already taken',
+            'code': 'E_OCUPIED'
+        }), 400
 
 # Protect a view with jwt_required, which requires a valid access token
 # in the request to access.
+
+
 @auth.route('/protected', methods=['GET'])
 @jwt_required
 def protected():

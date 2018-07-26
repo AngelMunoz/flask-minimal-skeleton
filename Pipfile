@@ -13,6 +13,8 @@ gunicorn = "*"
 mongoengine = "*"
 flask-mongoengine = "*"
 flask-jwt-extended = "*"
+eventlet = "*"
+flask-socketio = "*"
 
 [requires]
 python_version = "3.6"
