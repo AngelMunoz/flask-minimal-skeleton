@@ -1,37 +1,43 @@
-#### NOTE:
-I made this when I was starting web development overall if there are old patterns and stuff you see it's a bad practice please raise an issue or make a pr :) I'd gladly accept it thanks
+[Flask]: http://flask.pocoo.org/
+[blueprint]: http://flask.pocoo.org/docs/1.0/blueprints/
+[JWT]: https://github.com/vimalloc/flask-jwt-extended
+[previous project]: https://github.com/AngelMunoz/FlaskBlueprintsDemo
+[auth]:
 
-# Hello everyone!
-This is a flask application using blueprints.
-Blueprints are really good when one of the concerns is scalable apps.
-each "blueprint" is what we could call a module, the application here is composed of two modules
-`auth` and `admin` as the names suggest, auth is the module in charge of authentication and user session and allowing
-where can users go or can not.
+# Minimal Flask Skeleton
+This is a fairly small [Flask] skeleton that includes an [auth] [blueprint] with minimal details
 
-admin is a module that emulates a very simple administration website
+- Login
+- SignUp
+- Protected
 
-the website is composed of a user who has a company and said company may have many subsidiaries, each subsidiary may have several employees.
+It uses [JWT] authentication so it's already suited for RESTful API development
+to create a new *module* (blueprint) create a directory, put an `__init__.py` inside, add your `controller.py` (tipically called `routes` in other flask apps) insert at least the following lines
+```py
+from flask import Blueprint
+# <blueprint_name> = Blueprint('<blueprint_name>', __name__)
+users = Blueprint('users', __name__)
 
-while is not such a complex scenario, it shows you some concepts of the modern web development.
+@users.route('/')
+def hello_users():
+    """
+    http://host:port/users
+    (after you include your prefix in app/__init__.py)
+    """
+    return "Hello Users"
+```
+and inside `app/__init__.py` add the following lines
+```py
+from app.auth.controller import auth
+from app.users.controller import users # this one
+# register blueprints
+app.register_blueprint(auth, url_prefix='/auth')
+# http://host:port/users
+app.register_blueprint(users, url_prefix='/users') # this one
+```
 
-the application logic is a MVC workflow structure
-where each module has its own controller and its own views, however the models work for the whole application.
-each module will contain its own readme file explaining what is done there.
+feel free to clone and add more stuff as your app grows
 
-Have a nice day! oh by the way! this app is hosted in Heroku (thank you continuous deployment!)
-which picks the files in github and serves them and updates as soon as the repository is updated.
+if you feel I'm missing something, please send a pull request or raise an issue in github
 
-
-## UPDATE 10/10/2017
-Added new Files
-- `.env`
-- `Pipfile/Pipfile.lock`
-
-You aren't likely to put `.env` into source control but I put it here for completeness.
-
-Added Pipfile/Pipfile.lock these is an amazing way to keep your python dependencies management under control.
-(it even loads .env files!) check more about it [here](https://github.com/kennethreitz/pipenv)
-### Misc.
-- Fixed Sign up form
-- Updated dependencies
-- Fixed some warning deprecation messages
+this repo was built from this [previous project]
