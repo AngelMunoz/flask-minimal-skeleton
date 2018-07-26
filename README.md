@@ -3,9 +3,13 @@
 [JWT]: https://github.com/vimalloc/flask-jwt-extended
 [previous project]: https://github.com/AngelMunoz/FlaskBlueprintsDemo
 [auth]: https://github.com/AngelMunoz/flask-minimal-skeleton/blob/master/app/auth/controller.py
+[MongoEngine]: http://docs.mongoengine.org/
+[flask-mongoengine]: http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/
+[MongoDB]: https://www.mongodb.com/
+
 
 # Minimal Flask Skeleton
-This is a fairly small [Flask] skeleton that includes an [auth] [blueprint] with minimal details
+This is a fairly small [Flask] skeleton that includes an [auth] [blueprint] with minimal details using [MongoEngine] (using [flask-mongoengine]) and [MongoDB] as a database engine
 
 - Login
 - SignUp
