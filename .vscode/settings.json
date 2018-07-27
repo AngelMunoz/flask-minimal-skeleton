@@ -9,5 +9,8 @@
         "**/__pycache__": true,
         "**/*.pyc": true
     },
-    "python.pythonPath": "/home/daniel/.local/share/virtualenvs/vendutron-oYMmlPA0/bin/python"
+    "python.pythonPath": "/home/daniel/.local/share/virtualenvs/vendutron-oYMmlPA0/bin/python",
+    "typescript.tsdk": "Client/node_modules/typescript/lib",
+    "html.suggest.angular1": false,
+    "html.suggest.ionic": false
 }

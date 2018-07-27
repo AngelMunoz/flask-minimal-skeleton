@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine
 from flask_jwt_extended import JWTManager
@@ -12,12 +12,6 @@ CORS(app)
 db = MongoEngine(app)
 jwt = JWTManager(app)
 socketio = SocketIO(app)
-
-
-@app.errorhandler(404)
-def not_found(error):
-    return jsonify({'message': 'Not found', 'code': 'E_NOF'}), 404
-
 
 @app.errorhandler(405)
 def method_not_allowed(error):
@@ -50,3 +44,12 @@ def handle_protected(message):
     message_back = f'Hey Back There!'
     emit('protected back', message_back)
     return message_back
+
+
+@app.route('/')
+def home():
+    return render_template('client/index.html')
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('client/index.html')
