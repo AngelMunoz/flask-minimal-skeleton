@@ -5,13 +5,14 @@ from flask_jwt_extended import JWTManager
 from flask_socketio import SocketIO, send, emit
 from app.decorators import ws_jwt_required
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='client')
 app.config.from_object('config')
 
 CORS(app)
 db = MongoEngine(app)
 jwt = JWTManager(app)
 socketio = SocketIO(app)
+
 
 @app.errorhandler(405)
 def method_not_allowed(error):
@@ -48,8 +49,9 @@ def handle_protected(message):
 
 @app.route('/')
 def home():
-    return render_template('client/index.html')
+    return render_template('index.html')
+
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('client/index.html')
+    return render_template('index.html')

@@ -17,13 +17,13 @@ const title = 'Aurelia Navigation Skeleton';
 const outDir = path.resolve(__dirname, project.platform.output);
 const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
-const baseUrl = '/';
+const baseUrl = '/client';
 
 const cssRules = [
   { loader: 'css-loader' },
 ];
 
-module.exports = ({production, server, extractCss, coverage, analyze} = {}) => ({
+module.exports = ({ production, server, extractCss, coverage, analyze } = {}) => ({
   resolve: {
     extensions: ['.js'],
     modules: [srcDir, 'node_modules'],
@@ -41,11 +41,6 @@ module.exports = ({production, server, extractCss, coverage, analyze} = {}) => (
     chunkFilename: production ? '[name].[chunkhash].chunk.js' : '[name].[hash].chunk.js'
   },
   performance: { hints: false },
-  devServer: {
-    contentBase: outDir,
-    // serve index.html for all 404 (required for push-state)
-    historyApiFallback: true
-  },
   devtool: production ? 'nosources-source-map' : 'cheap-module-eval-source-map',
   module: {
     rules: [
@@ -77,8 +72,9 @@ module.exports = ({production, server, extractCss, coverage, analyze} = {}) => (
         issuer: /\.html?$/i
       },
       { test: /\.html$/i, loader: 'html-loader' },
-      { test: /\.js$/i, loader: 'babel-loader', exclude: nodeModulesDir,
-        options: coverage ? { sourceMap: 'inline', plugins: [ 'istanbul' ] } : {},
+      {
+        test: /\.js$/i, loader: 'babel-loader', exclude: nodeModulesDir,
+        options: coverage ? { sourceMap: 'inline', plugins: ['istanbul'] } : {},
       },
       { test: /\.json$/i, loader: 'json-loader' },
       // use Bluebird as the global Promise implementation:
@@ -97,10 +93,11 @@ module.exports = ({production, server, extractCss, coverage, analyze} = {}) => (
       'Promise': 'bluebird'
     }),
     new ModuleDependenciesPlugin({
-      'aurelia-testing': [ './compile-spy', './view-spy' ]
+      'aurelia-testing': ['./compile-spy', './view-spy']
     }),
     new HtmlWebpackPlugin({
       template: 'index.ejs',
+      filename: '../templates/index.html',
       metadata: {
         // available in index.ejs //
         title, server, baseUrl
