@@ -6,7 +6,8 @@
 [MongoEngine]: http://docs.mongoengine.org/
 [flask-mongoengine]: http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/
 [MongoDB]: https://www.mongodb.com/
-
+[Aurelia]: https://aurelia.io/
+[Bulma]: https://bulma.io/
 
 # Minimal Flask Skeleton
 This is a fairly small [Flask] skeleton that includes an [auth] [blueprint] with minimal details using [MongoEngine] (using [flask-mongoengine]) and [MongoDB] as a database engine
@@ -76,3 +77,16 @@ DEBUG=True
 ```
 
 if you intend to publish this repo else were remember to put `.env` file outside github I left it here for *completeness*
+
+# Client
+This sample also Includes an [Aurelia] Frontend, if you are not going to use it you may delete it.
+the aurelia sample is made of the aurelia-cli webpack template, it spits out app.js and vendor.js
+file to the `app/client` (it is taken as a static folder in `app/__init__.py`) and the `index.ejs`
+to `app/templates/index.html`, so if you want to switch to another frontend you can just
+spit the bundles and index files in those paths.
+
+for the Client compilation just run `au build --watch` with your flask server running, you won't have
+hot reload but an <kbd>F5</kbd> should reflect your changes.
+I didn't include anything fancy besides [Bulma], so you still have to implement proper Auth state
+management. While `sign up` and `log in` views work as intended, you still need to ensure
+the `views` and `access_token` are correctly protected, this template should give you a start.
