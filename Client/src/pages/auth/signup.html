@@ -1,0 +1,46 @@
+<template>
+  <form submit.trigger="signup()" class="card">
+    <header class="card-header">
+      <h1 class="card-header-title">Sign Up</h1>
+    </header>
+    <article class="card-content">
+      <section class="field">
+        <label class="label" for="name">Name</label>
+        <div class="control">
+          <input type="text" class="input" id="name" name="name" value.bind="payload.name" required>
+        </div>
+      </section>
+      <section class="field">
+        <label class="label" for="lastName">Last Name</label>
+        <div class="control">
+          <input type="text" class="input" id="lastName" name="lastName" value.bind="payload.last_name" required>
+        </div>
+      </section>
+      <section class="field">
+        <label class="label" for="email">Email</label>
+        <div class="control">
+          <input type="email" class="input" id="email" name="email" value.bind="payload.email" required>
+        </div>
+      </section>
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <section class="control">
+          <input type="password" class="input" id="password" name="password" value.bind="payload.password" required>
+        </section>
+      </div>
+      <div class="field">
+        <label class="label" for="repeatPassword">Password</label>
+        <section class="control">
+          <input type="password" class="input" id="repeatPassword" name="repeatPassword" value.bind="repeatPassword" required>
+        </section>
+      </div>
+      <section class="field">
+        <div class="control">
+          <button class="button is-link" type="submit">
+            Login
+          </button>
+        </div>
+      </section>
+    </article>
+  </form>
+</template>

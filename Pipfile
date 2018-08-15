@@ -15,6 +15,7 @@ flask-mongoengine = "*"
 flask-jwt-extended = "*"
 eventlet = "*"
 flask-socketio = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.6"

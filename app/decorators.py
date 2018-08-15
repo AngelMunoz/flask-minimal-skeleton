@@ -9,7 +9,7 @@ def ws_jwt_required(f):
     def wrapped(*args, **kwargs):
         try:
             verify_jwt_in_request()
-            f(*args, **kwargs)
+            return f(*args, **kwargs)
         except NoAuthorizationError as error:
             disconnect()
             return f'No Authorization Header Found {error}'

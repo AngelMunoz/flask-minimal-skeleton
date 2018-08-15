@@ -36,9 +36,9 @@ module.exports = ({ production, server, extractCss, coverage, analyze } = {}) =>
   output: {
     path: outDir,
     publicPath: baseUrl,
-    filename: production ? '[name].[chunkhash].bundle.js' : '[name].[hash].bundle.js',
-    sourceMapFilename: production ? '[name].[chunkhash].bundle.map' : '[name].[hash].bundle.map',
-    chunkFilename: production ? '[name].[chunkhash].chunk.js' : '[name].[hash].chunk.js'
+    filename: production ? '[name].bundle.js' : '[name].bundle.js',
+    sourceMapFilename: production ? '[name].bundle.map' : '[name].bundle.map',
+    chunkFilename: production ? '[name].chunk.js' : '[name].chunk.js'
   },
   performance: { hints: false },
   devtool: production ? 'nosources-source-map' : 'cheap-module-eval-source-map',

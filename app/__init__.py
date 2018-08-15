@@ -55,3 +55,16 @@ def home():
 @app.errorhandler(404)
 def not_found(error):
     return render_template('index.html')
+
+
+# prevent cached responses
+@app.after_request
+def add_header(r):
+    """
+    This will help if you are using the client part, 
+    if not you can just delete this method
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, public, max-age=0"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    return r
