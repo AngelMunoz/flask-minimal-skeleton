@@ -1,9 +1,17 @@
 {
-  "name": "Client",
+  "name": "client",
   "type": "project:application",
-  "bundler": {
-    "id": "webpack",
-    "displayName": "Webpack"
+  "paths": {
+    "root": "src",
+    "resources": "resources",
+    "elements": "resources/elements",
+    "attributes": "resources/attributes",
+    "valueConverters": "resources/value-converters",
+    "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "transpiler": {
+    "id": "babel",
+    "fileExtension": ".js"
   },
   "build": {
     "options": {
@@ -13,52 +21,9 @@
     }
   },
   "platform": {
-    "id": "web",
-    "displayName": "Web",
-    "port": 8080,
     "hmr": false,
     "open": false,
+    "port": 8080,
     "output": "../app/client"
-  },
-  "loader": {
-    "id": "none",
-    "displayName": "None"
-  },
-  "transpiler": {
-    "id": "babel",
-    "displayName": "Babel",
-    "fileExtension": ".js",
-    "options": {
-      "plugins": [
-        "transform-es2015-modules-amd"
-      ]
-    }
-  },
-  "markupProcessor": {
-    "id": "none",
-    "displayName": "None",
-    "fileExtension": ".html"
-  },
-  "cssProcessor": {
-    "id": "sass",
-    "displayName": "Sass",
-    "fileExtension": ".scss"
-  },
-  "editor": {
-    "id": "vscode",
-    "displayName": "Visual Studio Code"
-  },
-  "unitTestRunner": [],
-  "integrationTestRunner": {
-    "id": "none",
-    "displayName": "None"
-  },
-  "paths": {
-    "root": "src",
-    "resources": "resources",
-    "elements": "resources/elements",
-    "attributes": "resources/attributes",
-    "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors"
   }
 }

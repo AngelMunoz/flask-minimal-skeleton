@@ -1,10 +1,10 @@
 import webpackConfig from '../../webpack.config';
 import webpack from 'webpack';
 import project from '../aurelia.json';
-import {CLIOptions, Configuration} from 'aurelia-cli';
 import gulp from 'gulp';
-import configureEnvironment from './environment';
 import del from 'del';
+import { CLIOptions, Configuration } from 'aurelia-cli';
+import configureEnvironment from './environment';
 
 const analyze = CLIOptions.hasFlag('analyze');
 const buildOptions = new Configuration(project.build.options);
@@ -23,17 +23,21 @@ function buildWebpack(done) {
     compiler.watch({}, onBuild);
   } else {
     compiler.run(onBuild);
-    compiler.plugin('done', () => done());
+    compiler.hooks.done.tap('done', () => done());
   }
 }
 
 function onBuild(err, stats) {
-  if (err) {
+  if (!CLIOptions.hasFlag('watch') && err) {
     console.error(err.stack || err);
     if (err.details) console.error(err.details);
     process.exit(1);
   } else {
     process.stdout.write(stats.toString({ colors: require('supports-color') }) + '\n');
+
+    if (!CLIOptions.hasFlag('watch') && stats.hasErrors()) {
+      process.exit(1);
+    }
   }
 }
 
