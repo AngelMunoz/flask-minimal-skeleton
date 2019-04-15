@@ -8,7 +8,8 @@ pylint = "*"
 "autopep8" = "*"
 
 [packages]
-Flask = "*"
+Flask = ">=1.0.2"
+Jinja2 = ">=2.10.1"
 gunicorn = "*"
 mongoengine = "*"
 flask-mongoengine = "*"
@@ -16,6 +17,3 @@ flask-jwt-extended = "*"
 eventlet = "*"
 flask-socketio = "*"
 flask-cors = "*"
-
-[requires]
-python_version = "3.6"
