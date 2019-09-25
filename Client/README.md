@@ -2,26 +2,15 @@
 
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
-For more information, go to https://aurelia.io/docs/cli/webpack
+For more information, go to https://aurelia.io
 
-## Run dev app
+# pnpm
+I found recently that [pnpm]() is an awesome package manager, please give it a shot on this project
+simply run `pnpm install` (`npm i -g pnpm`)
 
-Run `au run`, then open `http://localhost:8080`
+# Developing
+since we're rendering our app from the flask skeleton we will not be using the `run` command from aurelia, instead we will use
 
-To open browser automatically, do `au run --open`.
+- `au build --watch`
 
-To change dev server port, do `au run --port 8888`.
-
-To enable Webpack Bundle Analyzer, do `au run --analyze`.
-
-To enable hot module reload, do `au run --hmr`.
-
-## Build for production
-
-Run `au build --env prod`.
-
-## Unit tests
-
-Run `au test` (or `au jest`).
-
-To run in watch mode, `au test --watch` or `au jest --watch`.
+and when we do any changes we can just press <kbd>F5</kbd>
