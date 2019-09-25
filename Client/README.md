@@ -5,7 +5,7 @@ This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 For more information, go to https://aurelia.io
 
 # pnpm
-I found recently that [pnpm]() is an awesome package manager, please give it a shot on this project
+I found recently that [pnpm](https://pnpm.js.org/) is an awesome package manager, please give it a shot on this project
 simply run `pnpm install` (`npm i -g pnpm`)
 
 # Developing
