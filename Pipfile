@@ -5,17 +5,17 @@ name = "pypi"
 
 [dev-packages]
 pylint = "*"
-"autopep8" = "*"
+autopep8 = "*"
 
 [packages]
-Flask = ">=1.0.2"
-Jinja2 = ">=2.10.1"
-werkzeug = ">=0.15.3"
+Flask = "*"
+Jinja2 = "*"
+werkzeug = "*"
 gunicorn = "*"
 mongoengine = "*"
 flask-mongoengine = "*"
 flask-jwt-extended = "*"
 eventlet = "*"
 flask-socketio = "*"
-python-engineio = ">=3.9.0"
+python-engineio = "*"
 flask-cors = "*"

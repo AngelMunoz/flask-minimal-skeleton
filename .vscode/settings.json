@@ -9,5 +9,5 @@
         "**/__pycache__": true,
         "**/*.pyc": true
     },
-    "python.pythonPath": "<Use your own pipenv venv here>",
+    "python.pythonPath": "/home/daniel/.local/share/virtualenvs/flask-minimal-skeleton-sIdDj9ve/bin/python",
 }

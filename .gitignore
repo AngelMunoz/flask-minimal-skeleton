@@ -4,5 +4,3 @@ env
 *.db
 typings
 staticfiles
-app/templates
-app/client

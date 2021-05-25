@@ -1,4 +1,3 @@
-from app import db
 from mongoengine import StringField, DateTimeField, Document
 from werkzeug.security import check_password_hash, generate_password_hash
 import datetime

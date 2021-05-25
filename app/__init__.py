@@ -1,3 +1,4 @@
+from .auth.controller import auth
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine
@@ -5,7 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_socketio import SocketIO, send, emit
 from app.decorators import ws_jwt_required
 
-app = Flask(__name__, static_folder='client')
+app = Flask(__name__, static_folder='static')
 app.config.from_object('config')
 
 CORS(app)
@@ -25,7 +26,6 @@ def server_error(error):
 
 
 # Importing views
-from app.auth.controller import auth
 # register blueprints
 app.register_blueprint(auth, url_prefix='/auth')
 
@@ -49,22 +49,9 @@ def handle_protected(message):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('index.html')
-
-
-# prevent cached responses
-@app.after_request
-def add_header(r):
-    """
-    This will help if you are using the client part, 
-    if not you can just delete this method
-    """
-    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, public, max-age=0"
-    r.headers["Pragma"] = "no-cache"
-    r.headers["Expires"] = "0"
-    return r
+    return app.send_static_file('index.html')
